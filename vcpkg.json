@@ -1,0 +1,12 @@
+{
+  "dependencies": [
+    "wxwidgets"
+  ],
+  "vcpkg-configuration": {
+    "default-registry": {
+      "kind": "git",
+      "baseline": "bc994510d2eb11aac7b43b03f67a7751d5bfe0e4",
+      "repository": "https://github.com/microsoft/vcpkg"
+    }
+  }
+}
