@@ -122,7 +122,7 @@ static const unsigned char black_png[] =
 	0x60, 0x82, 
 };
 
-wxBitmap& black_png_to_wx_bitmap()
+inline wxBitmap& black_png_to_wx_bitmap()
 {
 	static wxMemoryInputStream memIStream( black_png, sizeof( black_png ) );
 	static wxImage image( memIStream, wxBITMAP_TYPE_PNG );
