@@ -8,8 +8,6 @@ class App : public wxApp { public: virtual bool OnInit(); };
 
 wxIMPLEMENT_APP(App);
 
-bool patchFailed = false;
-
 bool App::OnInit() {
 	wxImage::AddHandler(new wxPNGHandler);
 
@@ -22,6 +20,8 @@ bool App::OnInit() {
 
 void MainWindow::ApplyPatches(wxCommandEvent& event) {
 	HWND win = FindWindowW(NULL, L"Mirror's Edge™ Catalyst");
+
+	bool patchFailed = false;
 
 	if (win) {
 		DWORD pid;
