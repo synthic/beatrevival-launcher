@@ -26,15 +26,15 @@ void MainWindow::ApplyPatches(wxCommandEvent& event) {
 	if (win) {
 		DWORD pid;
 		GetWindowThreadProcessId(win, &pid);
-		HANDLE hproc = OpenProcess(PROCESS_VM_WRITE|PROCESS_VM_OPERATION, FALSE, pid);
+		HANDLE hProc = OpenProcess(PROCESS_VM_WRITE|PROCESS_VM_OPERATION, FALSE, pid);
 
-		if (hproc) {
+		if (hProc) {
 			BYTE newData1[] = { 0x6C, 0x6F, 0x63, 0x61, 0x6C, 0x68, 0x6F, 0x73, 0x74, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }; // Hostname of redirector with padding
 			BYTE newData2[] = { 0x31 };
 			BYTE newData3[] = { 0xE9, 0xC7, 0x00 };
 
 			// Update redirector hostname
-			if (WriteProcessMemory(hproc, (LPVOID)0x141D80890, &newData1, (DWORD)sizeof(newData1), NULL)) {
+			if (WriteProcessMemory(hProc, (LPVOID)0x141D80890, &newData1, (DWORD)sizeof(newData1), NULL)) {
 				SetStatusText("Success!");
 			} else {
 				SetStatusText("ERROR: WriteProcessMemory failed.");
@@ -43,7 +43,7 @@ void MainWindow::ApplyPatches(wxCommandEvent& event) {
 			}
 
 			// Disable TLS in connect function
-			if (WriteProcessMemory(hproc, (LPVOID)0x142DBE9B0, &newData2, (DWORD)sizeof(newData2), NULL) && !patchFailed) {
+			if (WriteProcessMemory(hProc, (LPVOID)0x142DBE9B0, &newData2, (DWORD)sizeof(newData2), NULL) && !patchFailed) {
 				SetStatusText("Success!");
 			} else {
 				SetStatusText("ERROR: WriteProcessMemory failed.");
@@ -52,7 +52,7 @@ void MainWindow::ApplyPatches(wxCommandEvent& event) {
 			}
 
 			// Bypass encryption of authenticated requests
-			if (WriteProcessMemory(hproc, (LPVOID)0x1439C0D81, &newData3, (DWORD)sizeof(newData3), NULL) && !patchFailed) {
+			if (WriteProcessMemory(hProc, (LPVOID)0x1439C0D81, &newData3, (DWORD)sizeof(newData3), NULL) && !patchFailed) {
 				SetStatusText("Success!");
 				connectButton->SetBitmap(red_png_to_wx_bitmap());
 			} else {
@@ -61,7 +61,7 @@ void MainWindow::ApplyPatches(wxCommandEvent& event) {
 				patchFailed = true;
 			}
 
-			CloseHandle(hproc);
+			CloseHandle(hProc);
 		} else {
 			SetStatusText("ERROR: Unable to open process.");
 			connectButton->SetBitmap(black_png_to_wx_bitmap());
