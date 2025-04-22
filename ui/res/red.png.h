@@ -144,7 +144,7 @@ static const unsigned char red_png[] =
 	0xAE, 0x42, 0x60, 0x82, 
 };
 
-wxBitmap& red_png_to_wx_bitmap()
+inline wxBitmap& red_png_to_wx_bitmap()
 {
 	static wxMemoryInputStream memIStream( red_png, sizeof( red_png ) );
 	static wxImage image( memIStream, wxBITMAP_TYPE_PNG );

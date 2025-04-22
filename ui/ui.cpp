@@ -45,7 +45,6 @@ MainWindow::MainWindow( wxWindow* parent, wxWindowID id, const wxString& title, 
 	connectButton = new wxButton( bgPanel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 
 	connectButton->SetBitmap( black_png_to_wx_bitmap() );
-	connectButton->SetBitmapFocus( red_png_to_wx_bitmap() );
 	connectButton->SetBitmapMargins( wxSize( 5,5 ) );
 	middleSizer->Add( connectButton, 0, wxALIGN_CENTER|wxALL, 5 );
 
