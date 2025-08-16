@@ -29,9 +29,8 @@ MainWindow::MainWindow( wxWindow* parent, wxWindowID id, const wxString& title, 
 	wxBoxSizer* topSizer;
 	topSizer = new wxBoxSizer( wxHORIZONTAL );
 
-	welcomeText = new wxStaticText( borderSizer->GetStaticBox(), wxID_ANY, _("Welcome to Beat Revival"), wxDefaultPosition, wxDefaultSize, 0 );
-	welcomeText->Wrap( -1 );
-	topSizer->Add( welcomeText, 0, wxALIGN_CENTER|wxALL, 5 );
+	websiteLink = new wxHyperlinkCtrl( borderSizer->GetStaticBox(), wxID_ANY, _("Welcome to Beat Revival"), wxT("https://www.beatrevival.me"), wxDefaultPosition, wxDefaultSize, 0 );
+	topSizer->Add( websiteLink, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
 	borderSizer->Add( topSizer, 1, wxALIGN_CENTER, 5 );

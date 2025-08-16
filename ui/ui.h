@@ -11,17 +11,18 @@
 #include <wx/xrc/xmlres.h>
 #include <wx/intl.h>
 #include <wx/string.h>
-#include <wx/stattext.h>
-#include <wx/gdicmn.h>
-#include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
+#include <wx/hyperlink.h>
+#include <wx/gdicmn.h>
+#include <wx/font.h>
 #include <wx/sizer.h>
 #include <wx/statbox.h>
 #include <wx/button.h>
 #include <wx/bitmap.h>
 #include <wx/image.h>
 #include <wx/icon.h>
+#include <wx/stattext.h>
 #include <wx/panel.h>
 #include <wx/statusbr.h>
 #include <wx/frame.h>
@@ -37,7 +38,7 @@ class MainWindow : public wxFrame
 
 	protected:
 		wxPanel* bgPanel;
-		wxStaticText* welcomeText;
+		wxHyperlinkCtrl* websiteLink;
 		wxButton* connectButton;
 		wxStaticText* helpText;
 		wxStatusBar* statusBar;
