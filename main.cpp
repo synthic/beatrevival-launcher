@@ -14,6 +14,7 @@ bool App::OnInit() {
 	MainWindow* w = new MainWindow(NULL);
 	w->Show();
 	w->SetFocus();
+	w->SetStatusText("Ready.");
 
 	return true;
 }
@@ -42,7 +43,7 @@ void MainWindow::ApplyPatches(wxCommandEvent& event) {
 				patchFailed = true;
 			}
 
-			// Disable TLS in connect function
+			// Disable TLS in Connect function
 			if (WriteProcessMemory(hProc, (LPVOID)0x142DBE9B0, &newData2, (DWORD)sizeof(newData2), NULL) && !patchFailed) {
 				SetStatusText("Success!");
 			} else {

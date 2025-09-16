@@ -75,10 +75,15 @@ MainWindow::MainWindow( wxWindow* parent, wxWindowID id, const wxString& title, 
 
 	this->Centre( wxBOTH );
 
+	// Additional setup
+	int widths[] = { -1, 50 };
+	statusBar->SetFieldsCount( 2, widths );
+
 	wxIcon runnerIcon;
 	runnerIcon.CopyFromBitmap( red_png_to_wx_bitmap() );
 	this->SetIcon( runnerIcon );
 
+	// Event bindings
 	connectButton->Bind( wxEVT_BUTTON, &MainWindow::ApplyPatches, this );
 }
 
