@@ -1,11 +1,12 @@
 {
   "dependencies": [
+    "nlohmann-json",
     "wxwidgets"
   ],
   "vcpkg-configuration": {
     "default-registry": {
       "kind": "git",
-      "baseline": "c2f8cd332adf7720d5b91f70945840f308dfb6a7",
+      "baseline": "40e9e742d5fef85832e3a82cb15a3ca6c8cf76ed",
       "repository": "https://github.com/microsoft/vcpkg"
     }
   }
