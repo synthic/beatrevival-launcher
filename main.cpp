@@ -40,6 +40,9 @@ void MainWindow::ApplyPatches(wxCommandEvent& event) {
 
 	std::string newAuthCode = ReadJson();
 
+	SetStatusText("", 1);
+	connectButton->SetBitmap(black_png_to_wx_bitmap());
+
 	if (win) {
 		DWORD pid;
 		GetWindowThreadProcessId(win, &pid);
@@ -66,8 +69,7 @@ void MainWindow::ApplyPatches(wxCommandEvent& event) {
 				SetStatusText("Success!");
 				connectButton->SetBitmap(red_png_to_wx_bitmap());
 			} catch (...) {
-				SetStatusText("ERROR: WriteProcessMemory failed.");
-				connectButton->SetBitmap(black_png_to_wx_bitmap());
+				SetStatusText("Error: WriteProcessMemory failed.");
 			}
 
 			// Update authorization code
@@ -84,17 +86,15 @@ void MainWindow::ApplyPatches(wxCommandEvent& event) {
 
 					SetStatusText("AUTH", 1);
 				} catch (...) {
-					SetStatusText("", 1);
+					SetStatusText("FAIL", 1);
 				}
 			}
 
 			CloseHandle(hProc);
 		} else {
-			SetStatusText("ERROR: Unable to open process.");
-			connectButton->SetBitmap(black_png_to_wx_bitmap());
+			SetStatusText("Error: Unable to open process.");
 		}
 	} else {
-		SetStatusText("ERROR: Window not found.");
-		connectButton->SetBitmap(black_png_to_wx_bitmap());
+		SetStatusText("Error: Window not found.");
 	}
 }
