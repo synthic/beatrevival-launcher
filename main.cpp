@@ -73,7 +73,7 @@ void MainWindow::ApplyPatches(wxCommandEvent& event) {
 			}
 
 			// Update authorization code
-			if (!newAuthCode.empty()) {
+			if (!newAuthCode.empty() && newAuthCode.length() <= 256) {
 				try {
 					// Point to fixed memory address
 					WriteProcessMemory(hProc, (LPVOID)0x14388AED3, &newData3, (DWORD)sizeof(newData3), NULL);
