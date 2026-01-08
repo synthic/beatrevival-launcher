@@ -60,7 +60,7 @@ void MainWindow::ApplyPatches(wxCommandEvent& event) {
 				// Update redirector hostname
 				WriteProcessMemory(hProc, (LPVOID)0x141D80890, &hostname, (DWORD)sizeof(hostname), NULL);
 
-				// Disable TLS in Connect function
+				// Disable SSL in Connect function
 				WriteProcessMemory(hProc, (LPVOID)0x142DBE9B0, &newData1, (DWORD)sizeof(newData1), NULL);
 
 				// Bypass encryption of authenticated requests
@@ -72,7 +72,7 @@ void MainWindow::ApplyPatches(wxCommandEvent& event) {
 				SetStatusText("Error: WriteProcessMemory failed.");
 			}
 
-			// Update authorization code
+			// Update authentication code
 			if (!newAuthCode.empty() && newAuthCode.length() <= 256) {
 				try {
 					// Point to fixed memory address
